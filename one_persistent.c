@@ -12,7 +12,6 @@ void one_persistent()
     Device devices[num_devices];
     int transmission_duration = 3; // Each transmission takes 3 time steps to complete
 
-    // Initialize Devices
     initialize_devices(devices, num_devices);
 
     // Track how long each device has been transmitting
