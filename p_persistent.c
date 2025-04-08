@@ -22,7 +22,7 @@ void p_persistent(float probability)
     }
 
     // Simulate time steps
-    for (int time = 0; time < 20; time++)
+    for (int time = 1; time < 21; time++)
     {
         printf("\n--- Time Step %d ---\n", time);
         printf("Channel status: %s\n", channel_busy ? "BUSY" : "IDLE");
