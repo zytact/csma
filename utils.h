@@ -26,4 +26,4 @@ void handle_collision(Device devices[], int num_devices);
 void backoff(Device devices[], int num_devices);
 void initialize_devices(Device devices[], int num_devices);
 
-#endif // UTILS_H
+#endif
