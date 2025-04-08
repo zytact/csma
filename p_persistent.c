@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 #include "utils.h"
 
 void p_persistent(float probability)
@@ -92,5 +93,6 @@ void p_persistent(float probability)
         }
 
         backoff(devices, num_devices);
+        sleep(1);
     }
 }

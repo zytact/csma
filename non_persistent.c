@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 #include "utils.h"
 
 void non_persistent()
@@ -85,5 +86,6 @@ void non_persistent()
         }
 
         backoff(devices, num_devices);
+        sleep(1);
     }
 }

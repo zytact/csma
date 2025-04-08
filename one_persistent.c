@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 #include "utils.h"
 
 void one_persistent()
@@ -81,5 +82,7 @@ void one_persistent()
         }
 
         backoff(devices, num_devices);
+
+        sleep(1);
     }
 }
