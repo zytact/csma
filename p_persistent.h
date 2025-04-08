@@ -1,0 +1,1 @@
+void p_persistent(float probability);

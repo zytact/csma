@@ -3,7 +3,7 @@
 #include <time.h>
 #include "utils.h"
 
-void one_persistent()
+void p_persistent(float probability)
 {
     srand(time(NULL));
 
@@ -22,7 +22,7 @@ void one_persistent()
     }
 
     // Simulate time steps
-    for (int time = 1; time < 21; time++)
+    for (int time = 0; time < 20; time++)
     {
         printf("\n--- Time Step %d ---\n", time);
         printf("Channel status: %s\n", channel_busy ? "BUSY" : "IDLE");
@@ -38,17 +38,28 @@ void one_persistent()
             }
         }
 
-        // Devices with data attempt to transmit if channel is idle (1-persistent)
+        // Devices with data attempt to transmit if channel is idle (p-persistent)
         for (int i = 0; i < num_devices; i++)
         {
             if (devices[i].hasData && devices[i].state == IDLE)
             {
                 if (!channel_busy)
                 {
-                    transmit(&devices[i]);
-                    if (devices[i].state == TRANSMITTING)
+                    float random_val = (float)rand() / RAND_MAX;
+                    if (random_val <= probability)
                     {
-                        transmitting_time[i] = 1; // Start counting transmission time
+                        transmit(&devices[i]);
+                        if (devices[i].state == TRANSMITTING)
+                        {
+                            transmitting_time[i] = 1; // Start counting transmission time
+                            printf("Device %d transmits with probability %.2f (random: %.2f).\n",
+                                   devices[i].id, probability, random_val);
+                        }
+                    }
+                    else
+                    {
+                        printf("Device %d defers with probability %.2f (random: %.2f).\n",
+                               devices[i].id, probability, random_val);
                     }
                 }
                 else
