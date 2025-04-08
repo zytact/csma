@@ -1,0 +1,1 @@
+void non_persistent();
